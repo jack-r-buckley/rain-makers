@@ -1,12 +1,25 @@
 import time
 import sys
+from random import randrange
 from sample_cards import *
 
 class Player:
-    def __init__(self, name):
+    def __init__(self, name, deck):
       self.name = name
+      self.hand = []
+      self.deck = deck
       self.hp = 50
       self.position = None
+
+    def init_hand(self, new_hand=[]):
+      if len(new_hand) > 5:
+        self.hand=[x for x in new_hand.keys()]
+        return
+      idx = randrange(len(self.deck))
+      if idx not in new_hand.keys(): new_hand.idx=self.deck[idx]
+      self.init_hand(new_hand)
+
+    
 
     def check_if_dead(self):
       print(f"{self.name}: {self.hp}")
@@ -87,16 +100,19 @@ if __name__ == "__main__":
   p1 = Player("Keri")
   p2 = Player("Tama")
   game = Game_Session(p1, p2)
-  game.field[0][0].card = mud_drake
-  game.field[0][1].card = rabid_mole
-  game.field[0][2].card = steel_sparrow
-  game.field[0][3].card = seahorse_captain
-  game.field[0][4].card = combustion_snake
-  game.field[1][0].card = common_loon
-  game.field[1][1].card = horned_carp
-  game.field[1][2].card = fairy_cowboy
-  game.field[1][3].card = lava_slug
-  game.field[1][4].card = radiation_worm
-  game.run_game(p1, p2)
+  
+
+
+game.field[0][0].card
+game.field[0][1].card
+game.field[0][2].card
+game.field[0][3].card
+game.field[0][4].card
+game.field[1][0].card
+game.field[1][1].card
+game.field[1][2].card
+game.field[1][3].card
+game.field[1][4].card
+game.run_game(p1, p2)
 
 
